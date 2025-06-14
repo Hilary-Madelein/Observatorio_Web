@@ -1,0 +1,55 @@
+.pagina-microcuencas {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .card-estacion-horizontal {
+    flex: 1 1 calc(50% - 20px);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    height: 150px;
+    width: 100%;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  
+  .card-estacion-horizontal:hover {
+    transform: translateY(-5px);
+  }
+  
+  .img-estacion-horizontal {
+    height: 100%;
+    width: 180px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  /* Responsividad */
+@media (max-width: 1200px) {
+  .card-estacion-horizontal {
+    flex: 1 1 100%;
+}
+  
+  .img-estacion-horizontal {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .card-estacion-horizontal .card-body {
+    padding: 1rem;
+  }
+
+  .btn-acceder {
+    font-size: 12px;
+  }
+}
+
+  

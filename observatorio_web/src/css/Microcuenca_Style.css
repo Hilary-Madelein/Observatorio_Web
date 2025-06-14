@@ -1,0 +1,73 @@
+.pagina-microcuencas {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .container-microcuenca {
+    width: 95%;
+    max-width: 1500px;
+    margin: 100px auto 60px auto;
+    padding: 40px 50px;
+    background-color: white;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    flex: 1;
+}
+
+.card-microcuenca {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    width: 100%;
+  }
+  
+  .card-microcuenca:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .img-microcuenca {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .titulo-microcuenca {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #0C2840;
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .container-microcuenca {
+      margin: 20px 10px; 
+      padding: 15px; 
+  }
+  
+    .card-microcuenca {
+        width: 100%;
+    }
+}
+
+  @media screen and (max-width: 768px) {
+    .container-microcuenca {
+        margin: 20px 10px; 
+        padding: 15px; 
+    }
+
+    .card-microcuenca {
+        width: 100%;
+    }
+
+    .img-microcuenca {
+        height: 100px; 
+    }
+
+    .titulo-microcuenca {
+        font-size: 0.8rem !important; 
+    }
+}
