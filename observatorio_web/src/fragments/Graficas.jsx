@@ -305,8 +305,7 @@ export default function Graficas({ filtro }) {
           return (
             <div
               key={`${estacion}_${medida}_${idxGlobal}`}
-              className={`${datosDeEstaEstacion.length > 50 ? 'col-12' : 'col-lg-6 col-md-6'
-                } mb-4`}
+              className={todasGraficas.length === 1 ? 'col-12' : `${datosDeEstaEstacion.length > 50 ? 'col-12' : 'col-lg-6 col-md-6'} mb-4`}
             >
               <div className="grafica-card">
                 <div className="grafica-header">
