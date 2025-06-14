@@ -24,16 +24,24 @@ function Filtro({ onFiltrar }) {
     const [fechaFin, setFechaFin] = useState(null);
     const [estacionSeleccionada, setEstacionSeleccionada] = useState('');
     const [data, setData] = useState([]);
+    const [mensaje, setMensaje] = useState("");
 
     useEffect(() => {
         if (!data.length) {
             (async () => {
                 try {
                     const info = await ObtenerGet(getToken(), '/listar/estacion/operativas');
-                    if (info.code === 200) setData(info.info || []);
-                    else mensajes(info.msg, 'error', 'Error');
-                } catch {
-                    mensajes('Error al cargar estaciones operativas', 'error', 'Error');
+                    if (info.code === 200) {
+                        if (info.info && info.info.length) {
+                            setData(info.info);
+                        } else {
+                            setMensaje("No hay información");
+                        }
+                    } else {
+                        setMensaje(info.msg || "Error al cargar estaciones operativas");
+                    }
+                } catch (error) {
+                    setMensaje('Error al cargar estaciones operativas');
                 }
             })();
         }
@@ -145,8 +153,8 @@ function Filtro({ onFiltrar }) {
                     {/* Selector Escala Temporal */}
                     <FormControl
                         className="filtro-item"
-                        size="small"                  
-                        sx={{ minWidth: 100 }}         
+                        size="small"
+                        sx={{ minWidth: 100 }}
                     >
                         <InputLabel htmlFor="filtro">Escala temporal</InputLabel>
                         <Select
@@ -154,7 +162,7 @@ function Filtro({ onFiltrar }) {
                             value={filtroSeleccionado}
                             label="Escala temporal"
                             onChange={e => setFiltroSeleccionado(e.target.value)}
-                            size="small"                 
+                            size="small"
                         >
                             <MenuItem value="15min">15 minutos</MenuItem>
                             <MenuItem value="30min">30 minutos</MenuItem>
@@ -178,12 +186,17 @@ function Filtro({ onFiltrar }) {
                             label="Estación"
                             onChange={e => setEstacionSeleccionada(e.target.value)}
                             size="small"
+                            sx={{ padding: '0 10px' }}
                         >
-                            {data.map(est => (
-                                <MenuItem key={est.external_id} value={est.external_id}>
-                                    {est.name}
-                                </MenuItem>
-                            ))}
+                            {data.length > 0 ? (
+                                data.map(est => (
+                                    <MenuItem key={est.external_id} value={est.external_id}>
+                                        {est.name}
+                                    </MenuItem>
+                                ))
+                            ) : (
+                                <MenuItem disabled>{mensaje}</MenuItem>
+                            )}
                         </Select>
                     </FormControl>
 
