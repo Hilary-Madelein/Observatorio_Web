@@ -139,8 +139,8 @@ function Medidas() {
                 </div>
             ) : (
                 <div className="no-data-message">
-                    <i class="bi bi-exclamation-triangle-fill"></i>
-                    Sucedió un problema al cargar los datos
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    No hay datos disponibles o ocurrió un error al cargarlos.
                 </div>
             )}
         </div>
