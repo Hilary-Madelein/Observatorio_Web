@@ -54,6 +54,7 @@ function Medidas() {
         // configuración del socket 
         socketRef.current = io(URLBASE, {
             path: '/socket.io',
+            withCredentials: true
           });
         socketRef.current.on('new-measurements', fetchData);
 
