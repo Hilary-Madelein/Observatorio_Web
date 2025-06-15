@@ -1,5 +1,5 @@
-const URL = 'http://172.210.248.205:3006/api';
-export const URLBASE = "http://172.210.248.205:3006"; 
+const URL = 'https://observatorioapi-ezgvfxc2gedrbze9.eastus-01.azurewebsites.net/api';
+export const URLBASE = "https://observatorioapi-ezgvfxc2gedrbze9.eastus-01.azurewebsites.net"; 
 
 export const InicioSesion = async (data) => {
     const headers = {
