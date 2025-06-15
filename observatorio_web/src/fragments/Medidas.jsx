@@ -82,7 +82,7 @@ function Medidas() {
             if (!agrupadas[tipo_medida]) {
                 agrupadas[tipo_medida] = {
                     nombre: formatName(tipo_medida),
-                    icono: fenomeno?.icono ? `${URLBASE + "/images/icons_estaciones/" + fenomeno.icono}` : '',
+                    icono: fenomeno?.icono ? `${URLBASE}/images/icons_estaciones/${fenomeno.icono}` : '',
                     unidad: unidad || fenomeno?.unidad || '',
                     estaciones: []
                 };
@@ -120,7 +120,7 @@ function Medidas() {
                         <div key={index} className="custom-card">
                             <div className="icono-contenedor">
                                 <img
-                                    src={`${URLBASE}/images/icons_estaciones/${variable.icono}`}
+                                    src={variable.icono}
                                     alt={variable.nombre}
                                     className="icono-variable"
                                 />
