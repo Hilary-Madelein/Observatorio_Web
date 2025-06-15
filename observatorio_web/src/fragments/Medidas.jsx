@@ -55,11 +55,24 @@ function Medidas() {
         socketRef.current = io(URLBASE, {
             path: '/socket.io',
           });
-        socketRef.current.on('new-measurements', fetchData);
-
-        return () => {
+      
+          // Loguea en consola cuando se conecta
+          socketRef.current.on('connect', () => {
+            console.log('⚡️ Socket conectado! ID:', socketRef.current.id);
+          });
+      
+          // Tu evento de datos nuevos
+          socketRef.current.on('new-measurements', fetchData);
+      
+          // Opcional: también captar desconexiones
+          socketRef.current.on('disconnect', (reason) => {
+            console.log('🛑 Socket desconectado:', reason);
+          });
+      
+          return () => {
             socketRef.current.disconnect();
-        };
+            console.log('🛑 Socket limpiado y desconectado manualmente');
+          };
     }, []);
 
     const procesarMedidas = (medidas, fenomenos) => {
