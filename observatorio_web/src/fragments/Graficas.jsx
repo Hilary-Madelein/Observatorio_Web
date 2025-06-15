@@ -160,13 +160,13 @@ export default function Graficas({ filtro }) {
         }),
         backgroundColor: `${color}88`,
         borderColor: color,
-        borderWidth: 2,
+        borderWidth: 1.8,
         spanGaps: true,
         showLine: true,
         type: isBar ? 'bar' : 'line',
         tension: 0.4,
-        pointRadius: 6,
-        pointHoverRadius: 10,
+        pointRadius: 4,
+        pointHoverRadius: 8,
       };
 
       return { labels, datasets: [dataset] };
@@ -212,11 +212,11 @@ export default function Graficas({ filtro }) {
           ),
           borderColor: color,
           backgroundColor: `${color}88`,
-          borderWidth: 2,
+          borderWidth: 1.8,
           fill: false,
           tension: 0.4,
-          pointRadius: 6,
-          pointHoverRadius: 10,
+          pointRadius: 4,
+          pointHoverRadius: 8,
           type: isBar ? 'bar' : 'line',
         };
       });
