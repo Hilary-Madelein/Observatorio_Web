@@ -114,7 +114,7 @@ function Filtro({ onFiltrar }) {
                                 <i className="bi bi-calendar-range me-1" />Periodo de tiempo:
                             </Typography>
                             <Chip label={fechaInicio?.toLocaleDateString('es-ES')} size="small" sx={{ mx: 1 }} />
-                            <Typography variant="body1" className="text-muted">hasta</Typography>
+                            <Typography variant="body2" className="text-muted">hasta</Typography>
                             <Chip label={fechaFin?.toLocaleDateString('es-ES')} size="small" sx={{ ml: 1 }} />
                         </Box>
                     )}
@@ -147,6 +147,26 @@ function Filtro({ onFiltrar }) {
                     )}
                 </div>
 
+                {/* Nuevo contenedor explicativo */}
+                {filtroSeleccionado && (
+                    <div className="informacion-presentada col-lg-12 mb-4">
+                        <h5 className="mb-3 info-presentada-text">
+                            <i className="bi bi-info-circle-fill me-2"></i>
+                            Tipo de datos mostrados:
+                        </h5>
+                        <Box>
+                            {['15min', '30min', 'hora'].includes(filtroSeleccionado) ? (
+                                <Typography variant="body2">
+                                    En esta escala temporal, se presentan <strong>las mediciones originales</strong> registradas por las estaciones de monitoreo, sin aplicar agregación ni operaciones.
+                                </Typography>
+                            ) : (
+                                <Typography variant="body2">
+                                    En esta escala temporal, se muestran los datos recabados por las estaciones de monitoreo, <strong>procesados</strong> según la operación estadística adecuada para cada variable hidrometeorológica, ya sea promedio, máximo, mínimo o suma.
+                                </Typography>
+                            )}
+                        </Box>
+                    </div>
+                )}
 
                 <div className={`filtro-container col-lg-12 mb-4 ${filtroSeleccionado === 'rangoFechas' ? 'columna' : ''}`}>
 
