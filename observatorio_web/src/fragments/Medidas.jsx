@@ -10,9 +10,11 @@ import mensajes from '../utils/Mensajes';
 
 const normalize = str =>
     str
-        .toString()
-        .toLowerCase()
-        .replace(/[_\s]/g, '');
+      .toString()
+      .normalize('NFD')             
+      .replace(/[\u0300-\u036f]/g, '') 
+      .toLowerCase()
+      .replace(/[_\s]/g, '');        
 
 function procesarMedidas(medidas, fenomenos) {
     const agrupadas = {};
