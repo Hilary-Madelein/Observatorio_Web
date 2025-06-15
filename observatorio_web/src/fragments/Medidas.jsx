@@ -54,8 +54,8 @@ function Medidas() {
         // configuración del socket 
         socketRef.current = io(URLBASE, {
             path: '/socket.io',
-          });
-          
+        });
+
         socketRef.current.on('new-measurements', fetchData);
 
         return () => {
@@ -119,7 +119,11 @@ function Medidas() {
                     {variables.map((variable, index) => (
                         <div key={index} className="custom-card">
                             <div className="icono-contenedor">
-                                <img src={variable.icono} alt={`${variable.nombre} Icono`} className="icono-variable" />
+                                <img
+                                    src={`${URLBASE}/images/icons_estaciones/${variable.icono}`}
+                                    alt={variable.nombre}
+                                    className="icono-variable"
+                                />
                             </div>
                             <div className="contenido-card">
                                 <h5 className="titulo-variables">{variable.nombre} <span className="unidad-medida">({variable.unidad})</span></h5>
