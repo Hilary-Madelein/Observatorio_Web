@@ -85,6 +85,9 @@ export default function Graficas({ filtro }) {
     obtenerDatosPorFiltro();
   }, [filtro]);
 
+  console.log('Datos de la gráfica:', datosGrafica);
+  
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ flexDirection: 'column' }}>
@@ -131,6 +134,7 @@ export default function Graficas({ filtro }) {
           return fecha.toLocaleTimeString('es-ES', {
             hour: '2-digit',
             minute: '2-digit',
+            timeZone: 'UTC'
           });
 
         })
@@ -152,6 +156,7 @@ export default function Graficas({ filtro }) {
             const check = fecha.toLocaleTimeString('es-ES', {
               hour: '2-digit',
               minute: '2-digit',
+              timeZone: 'UTC'
             });
             return check === lbl && d.tipo_medida === medida;
 
@@ -181,16 +186,19 @@ export default function Graficas({ filtro }) {
           return fecha.toLocaleDateString('es-ES', {
             month: 'short',
             year: 'numeric',
+            timeZone: 'UTC'
           });
         } else if (filtro.tipo === 'diaria') {
           return fecha.toLocaleTimeString('es-ES', {
             hour: '2-digit',
             minute: '2-digit',
+            timeZone: 'UTC'
           });
         } else {
           return fecha.toLocaleDateString('es-ES', {
             day: '2-digit',
             month: 'short',
+            timeZone: 'UTC'
           });
         }
       });
@@ -243,6 +251,7 @@ export default function Graficas({ filtro }) {
       });
     });
   });
+  
 
   return (
     <div className="custom-container-graficas">

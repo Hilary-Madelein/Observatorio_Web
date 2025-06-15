@@ -1,6 +1,9 @@
 const URL = 'https://observatorioapi-ezgvfxc2gedrbze9.eastus-01.azurewebsites.net/api';
 export const URLBASE = "https://observatorioapi-ezgvfxc2gedrbze9.eastus-01.azurewebsites.net"; 
 
+//const URL = 'http://localhost:5007/api';
+//export const URLBASE = "http://localhost:5007"; 
+
 export const InicioSesion = async (data) => {
     const headers = {
         "Accept": 'application/json',
