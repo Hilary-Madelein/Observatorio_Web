@@ -147,7 +147,7 @@ function AgregarEstacion({ external_id_estacion }) {
                             style={{ fontWeight: 'bold', paddingTop: '10px' }}>
                             <OverlayTrigger
                                 placement="top"
-                                overlay={<Tooltip>Identificador proporcionado por la plataforma The Things Network TTN, se encuentra como device_id</Tooltip>}
+                                overlay={<Tooltip>Identificador proporcionado por la plataforma The Things Network TTN, se encuentra como End device ID</Tooltip>}
                             >
                                 <i class="bi bi-question-circle-fill" style={{ cursor: 'pointer', color: '#60B5FF' }}></i>
                             </OverlayTrigger>
@@ -192,15 +192,16 @@ function AgregarEstacion({ external_id_estacion }) {
                         <input
                             type="text"
                             {...register('longitud', {
-                                required: 'Ingrese la longitud', pattern: {
+                                required: 'Ingrese la longitud',
+                                pattern: {
                                     value: /^-?\d+(\.\d+)?$/,
                                     message: 'Ingrese una coordenada válida (número decimal)'
                                 }
-                            })
-                            }
+                            })}
                             className="form-control form-control-user"
-                            placeholder="Ingrese la longitud"
+                            placeholder="Ej: -9.1124"
                         />
+
                         {errors.longitud && <div className='alert alert-danger'>{errors.longitud.message}</div>}
                     </div>
                     <div className="col-md-6 form-group mb-3">
@@ -214,7 +215,7 @@ function AgregarEstacion({ external_id_estacion }) {
                                 }
                             })}
                             className="form-control form-control-user"
-                            placeholder="Ingrese la latitud"
+                            placeholder="Ej: -5.10"
                         />
                         {errors.latitud && <div className='alert alert-danger'>{errors.latitud.message}</div>}
                     </div>
