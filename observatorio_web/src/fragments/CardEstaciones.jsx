@@ -23,7 +23,7 @@ function MapaConEstaciones() {
     const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/satellite-streets-v12');
     const [location, setLocation] = useState({ lat: 0, lng: 0, zoom: 0 });
     const markersRef = useRef([]);
-    const [marker, setMarker] = useState(null);
+    //const [marker, setMarker] = useState(null);
 
     useEffect(() => {
         if (!mapContainerRef.current) return;
@@ -332,26 +332,6 @@ function MapaConEstaciones() {
 
     const changeMapStyle = (event) => {
         setMapStyle(event.target.value);
-    };
-
-    const getUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                setLocation({ lat: latitude.toFixed(5), lng: longitude.toFixed(5), zoom: map?.getZoom().toFixed(2) || initialView.zoom });
-                map?.flyTo({ center: [longitude, latitude], zoom: 12 });
-
-                if (marker) {
-                    marker.remove();
-                }
-                const newMarker = new mapboxgl.Marker({ color: 'red' })
-                    .setLngLat([longitude, latitude])
-                    .addTo(map);
-                setMarker(newMarker);
-            });
-        } else {
-            mensajes('Geolocalización no soportada por tu navegador', 'info', 'Informacion');
-        }
     };
 
     return (
