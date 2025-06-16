@@ -51,24 +51,24 @@ function MapaConEstaciones() {
 
     useEffect(() => {
         const cargarDatos = async () => {
-          setLoading(true);
-          try {
-            const response = await ObtenerGet(getToken(), '/listar/microcuenca/operativas');
-            if (response.code === 200) {
-              setData(response.info);
-            } else {
-              console.error(response.msg);
+            setLoading(true);
+            try {
+                const response = await ObtenerGet(getToken(), '/listar/microcuenca/operativas');
+                if (response.code === 200) {
+                    setData(response.info);
+                } else {
+                    console.error(response.msg);
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
             }
-          } catch (err) {
-            console.error(err);
-          } finally {
-            setLoading(false);
-          }
         };
-      
+
         cargarDatos();
-      }, []);
-      
+    }, []);
+
 
     const obtenerEstacionesMicrocuenca = async (externalId) => {
         try {
@@ -267,12 +267,14 @@ function MapaConEstaciones() {
                                 <!-- CONTENIDO: MEDICIONES -->
                                 <div class="popup-content">
                                 ${mediciones.length > 0
-                                                        ? mediciones
-                                                            .map((m) => {
-                                                                const fechaLocal = new Date(m.fecha_medicion).toLocaleString('es-EC', {
-                                                                    timeZone: 'America/Guayaquil'
-                                                                });                                                                
-                                                                return `
+                            ? mediciones
+                                .map((m) => {
+                                    const fecha = m.fecha_medicion.split('T')[0];
+                                    const hora = m.fecha_medicion.split('T')[1].slice(0, 8);
+                                    const fechaLocal = `${fecha} / ${hora}`;
+
+
+                                    return `
                                             <div class="medicion-item">
                                                 <div class="medicion-row">
                                                 <span class="medicion-tipo">${m.tipo_medida}</span>
@@ -281,10 +283,10 @@ function MapaConEstaciones() {
                                                 <div class="medicion-fecha">${fechaLocal}</div>
                                             </div>
                                             `;
-                                                            })
-                                                            .join('')
-                                                        : `<div class="sin-mediciones">No hay mediciones recientes.</div>`
-                                                    }
+                                })
+                                .join('')
+                            : `<div class="sin-mediciones">No hay mediciones recientes.</div>`
+                        }
                                 </div>
                             </div>
                             `;
