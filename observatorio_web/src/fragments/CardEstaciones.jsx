@@ -410,7 +410,7 @@ function MapaConEstaciones() {
                         </Select>
                     </FormControl>
 
-                    <button onClick={getUserLocation} className="location-button">Ubicación actual</button>
+                    {/*<button onClick={getUserLocation} className="location-button">Ubicación actual</button>*/}
                     <div className="map-info"> <strong>Lat:</strong> {location.lat} | <strong>Lng:</strong> {location.lng} | <strong>Zoom:</strong> {location.zoom}</div>
                 </div>
                 <div className="mapa-section" ref={mapContainerRef} />
