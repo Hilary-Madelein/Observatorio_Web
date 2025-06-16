@@ -261,6 +261,7 @@ function MapaConEstaciones() {
                                 <div class="popup-header">
                                 <div class="popup-title">${name}</div>
                                 <div class="popup-subtitle">${microcuencaNombre || ''}</div>
+                                <div class="popup-subtitle">Última medición</div>
                                 </div>
 
                                 <!-- CONTENIDO: MEDICIONES -->
@@ -268,7 +269,9 @@ function MapaConEstaciones() {
                                 ${mediciones.length > 0
                                                         ? mediciones
                                                             .map((m) => {
-                                                                const fechaLocal = new Date(m.fecha_medicion).toLocaleString();
+                                                                const fechaLocal = new Date(m.fecha_medicion).toLocaleString('es-EC', {
+                                                                    timeZone: 'America/Guayaquil'
+                                                                });                                                                
                                                                 return `
                                             <div class="medicion-item">
                                                 <div class="medicion-row">
